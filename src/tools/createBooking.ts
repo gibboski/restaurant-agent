@@ -1,5 +1,5 @@
 import { db } from '../db';
-import { BookingPayload, BookingAdapter } from '../adapters/base';
+import type { BookingPayload, BookingAdapter } from '../adapters/base';
 import { getAdapter } from '../adapters';
 
 export async function createBooking(p:BookingPayload) {
