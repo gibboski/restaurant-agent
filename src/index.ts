@@ -9,6 +9,8 @@ import { emailAutoReply } from './tools/emailAutoReply';
 import { embed } from './embeddings';
 import { upsertVectors } from './vector';
 import { addCallLog } from './tools/addCallLog'; // <-- exactly once, no ".ts"
+import { mockBooking } from './mock/provider';
+
 
 const app = express();
 app.use(cors());
@@ -56,6 +58,9 @@ app.post('/v1/email/auto-reply', async (req, res) => {
   const data = await emailAutoReply(venue_slug, to, subject, body);
   res.json(data);
 });
+
+app.post('/v1/mock/provider', mockBooking);
+
 
 // Call log endpoint for your voice assistant to write logs
 app.post('/v1/call/log', async (req, res) => {
